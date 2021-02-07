@@ -1,0 +1,259 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+    font-weight: 400;
+    font-size: small;
+    margin: 5px 0px;
+}
+
+.header{
+    background-color:  rgb(210, 210, 255);
+    font-weight: 700;
+    font-size: 20px;
+    padding: 10px;
+}
+.main-container{
+    position: relative;
+}
+#mapid { 
+    height: 93vh; 
+    width: 85vw;
+    z-index: 1;}
+    
+.main-container .container{
+    background-color: rgb(210, 210, 255);
+    width: 50vh;
+    height: 93vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    
+}
+
+.main-container .container .resto {
+    box-sizing: border-box;
+    margin: 20px;
+}
+
+.resto-item{
+    border: white 1px solid;
+    padding: 5px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.main-container .container{
+    overflow: scroll;
+    
+}
+
+.ratings {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-evenly;
+}
+.ratings p {
+    margin: 10px 0px;
+}
+
+img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.thumbnail-popup{
+    padding: 10px 0px;
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+.leaflet-popup-content p{
+  margin: 0;
+}
+
+.rating {
+  display: inline-block;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  text-align: center;
+  margin: auto;
+
+}
+.rating .star {
+  display: none;
+}
+.rating label {
+  color: lightgray;
+  display: inline-block;
+  font-size: 15pt;
+  margin: 0 -2px;
+  transition: transform 0.15s ease;
+  cursor: pointer;
+}
+.rating label:hover {
+  transform: scale(1.35, 1.35);
+}
+.rating label:hover,
+.rating label:hover ~ label {
+  color: orange;
+}
+.rating .star:checked ~ label {
+  color: orange;
+}
+
+.rating label.rateNum{
+  font-size: medium;
+  font-weight: 700;
+}
+
+  
+  h3{
+      margin: 0px;
+      padding: 10px 0px;
+      font-size: large;
+    }
+
+
+
+    /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 20px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: scroll; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: rgb(214, 214, 214);
+    margin: 10px auto 20px;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    border-radius: 5px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .review-item {
+    background-color: white;
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 10px;
+  }
+
+.leaflet-popup-content button.review-button {
+    border: none;
+    color: rgb(16, 100, 121) ;
+    background: white ;
+    padding: 10px 0px ;
+    display: block ;
+    margin: auto ;
+  }
+
+  span {
+    display: inline-block;
+    position: relative;
+    width: 1.2em;
+    height: 1.2em;
+    color: black;
+  }
+  
+  .high{
+    color: rgb(217, 211, 0);
+  }
+
+  button#add-review{
+    background-color: rgb(16, 100, 121);
+    color: white;
+    border: none;
+    border-radius: 2px;
+    padding: 5px;
+    margin: 5px 0;
+  }
+
+  .add-review-container, .marker-review-container{
+    display: inline-block;
+    background-color: white;
+    width: 100%;
+  }
+
+  form#review-form,#new-marker-form{
+    width: 100%;
+    padding: 5px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    
+  }
+  input[type=text],textarea{
+    display: block;
+    margin: 5px 0;
+  }
+
+  input[type=submit]{
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;
+    border: none;
+    background-color:  rgb(16, 100, 121);
+    padding: 5px 10px;
+    color: rgb(210, 210, 255);
+  }
+
+  input[type=submit]:hover{
+    background-color: rgb(15, 63, 75);
+    color: rgb(210, 210, 255);
+  }
+
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    #mapid { 
+        width: 100vw;}
+    .main-container .container{
+        width: 100vw;
+        height: 30vh;
+        top: 70vh;
+        overflow: scroll;
+    }
+    .resto-item>img{
+        width: 80%;
+        display: block;
+        margin: auto;
+    }
+
+    .ratings{
+        margin-top: 20px;
+    }
+    .modal-content {
+      width: 80%;
+    }
+  }

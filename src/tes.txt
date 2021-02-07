@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<h2>Modal Example</h2>
+
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+<button id="Btn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
+<!-- The Modal -->
+<div id="Modal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some peler..</p>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+var modaldua = document.getElementById("Modal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+var btndua = document.getElementById("Btn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+var spandua = document.getElementsByClassName("close")[1];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+btndua.onclick = function() {
+  modaldua.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+spandua.onclick = function() {
+  modal.style.display = "none";
+  modaldua.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal || event.target == modaldua) {
+    modal.style.display = "none";
+    modaldua.style.display = "none";
+  }
+}
+</script>
+
+</body>
+</html>
+
+
+import "./styles.css";
+
+const starRating = 
+`
+<div class="rating">
+<input id="radio1" type="radio" name="star" value="5" class="star" />
+<label for="radio1">&#9733;</label>
+<input id="radio2" type="radio" name="star" value="4" class="star" />
+<label for="radio2">&#9733;</label>
+<input id="radio3" type="radio" name="star" value="3" class="star" />
+<label for="radio3">&#9733;</label>
+<input id="radio4" type="radio" name="star" value="2" class="star" />
+<label for="radio4">&#9733;</label>
+<input id="radio5" type="radio" name="star" value="1" class="star" />
+<label for="radio5">&#9733;</label>
+</div>
+`;
+
+document.getElementById("rating-star").innerHTML = starRating;
+// Total Stars
+let starsRate = document.querySelector(".rating")
+let ratebutton = document.querySelectorAll(".rating .star");
+for (const button of ratebutton) {
+  button.addEventListener("click", function (event) {
+    console.log(this.value);
+  });
+}
+
+const reviewContainer = document.querySelector(".review-list");
+var api_review = `https://developers.zomato.com/api/v2.1/reviews?res_id=50692`;
+fetch(api_review, {
+  method: "GET",
+  headers: {
+    "user-key": "0ff6d128a533d91d4129678e70043653"
+  }
+})
+  .then(
+    (response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error("Req Failed !");
+    },
+    (networkError) => console.log(networkError.message)
+  )
+  .then((jsonResponse) => {
+    const reviewList = jsonResponse.user_reviews;
+    // console.log(reviewList);
+    //mapping & onclick
+    // reviewList.map((result) => console.log(result.review));
+    let ratings = reviewList.map((result) => result.review.rating);
+    function getRatings() {
+      for (let rating in ratings) {
+        // Get percentage
+        const star = ratings[rating];
+        console.log(star);
+        // Set width of stars-inner to percentage
+        
+      }
+    }
+    getRatings();
+  });
